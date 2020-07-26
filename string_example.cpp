@@ -1,27 +1,30 @@
-#include<iostream>
-#include<string.h>
+#include <iostream>
+#include <string.h>
 
 using namespace std;
 
 int main()
 {
-   char str[40];
-   char str1[] = "hi there! ";
-   char str2[] = "this is a, string";
-   char * tok;
-   
-   strncpy(str, str1, sizeof(str1)); // used sizeof to copy whole str1 into str 
-   strncat(str, str2, 13); // appends only 13 charaters of str2 in str
-   
-   cout<<str1<<endl<<str2<<endl<<str<<"\n\n";
-   
-   tok = strtok(str, " !,");
-   while(tok != NULL)
-   {
-       cout<<tok<<endl;
-       tok = strtok(NULL, " !,");
-   }
-   
-   
-   return 0;
+   char str1[] = "This! is test";
+   char str2[] = "string";
+   char * tok;
+   
+   cout << "\nInitial strings\nstr1 = "<< str1 <<"\nstr2 = "<< str2 << endl;
+   
+   cout << "\nTokens of str1 with delimiters \' !\' \n";
+   
+   tok = strtok(str1, " !");
+    while(tok != NULL)
+    {
+        cout<<tok<<endl;
+        tok = strtok(NULL, " !");
+    }
+   
+   strncpy(str1, str2, 8);
+   printf("\nAfter copying str2 into str1 \nstr1 = %s\nstr2 = %s", str1, str2 );
+   
+   strncat(str1, str2, 5);
+   printf("\n\nAfter concatenation str2 into str1 \nstr1 = %s\nstr2 = %s", str1, str2 );
+   
+   return 0;
 }
